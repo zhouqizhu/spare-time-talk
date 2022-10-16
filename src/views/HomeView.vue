@@ -1,5 +1,15 @@
 <script setup lang="ts">
+    import get from "../request"
+    import RandomCard from "../components/RandomCard.vue"
+    import { ref } from "@vue/reactivity"
 
+    const showCard = ref(false)
+    const getJokes = () => {
+        return showCard.value = true
+    }
+    const getEmojis = () => {}
+    const getColdKnowledge = () => {}
+    const getDJT = () => {}
 </script>
 
 <template>
@@ -11,9 +21,16 @@
             <button class="sgetDJT" @click="getDJT">毒鸡汤</button>
         </div>
     </div>
+    <div class="showCard">
+        <RandomCard v-if="showCard"></RandomCard>
+        <div v-else>1</div>
+    </div>
 </template>
 
 <style lang="scss" scoped>
+    .random {
+        position: relative;
+    }
     button {
         margin: .2rem;
         font-size: .3rem;
@@ -48,5 +65,12 @@
     }
     .sgetDJT::after {
         background-color: rgb(238, 63, 150);
+    }
+
+    .showCard {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 </style>
